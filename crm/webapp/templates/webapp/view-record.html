@@ -4,6 +4,16 @@
 
     <div class="card">
 
+        <strong>
+
+            &nbsp; &nbsp;
+
+            {{record.first_name|upper}}
+
+        </strong>
+
+        <hr>
+
         <div class="card-body">
 
             <p><strong>ID: </strong> {{record.id}} </p>
@@ -28,7 +38,7 @@
 
     &nbsp;
 
-    <a href="{% url 'dashboard' %}" class="btn btn-danger">Удалить</a>
+    <a href="{% url '' %}" class="btn btn-danger">Удалить</a>
 
 
 {% endblock %}
