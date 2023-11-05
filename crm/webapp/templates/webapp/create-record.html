@@ -17,7 +17,23 @@
 
                     {% csrf_token %}
 
-                    {{form|crispy}}
+                    {{form.first_name|as_crispy_field}}
+
+                    <br>
+
+                    {{form.inv_num|as_crispy_field}}
+
+                    <br>
+
+                    {{form.ser_num|as_crispy_field}}
+
+                    <br>
+
+                    {{form.place_pass|as_crispy_field}}
+
+                    <br>
+
+                    {{form.status_pass|as_crispy_field}}
 
                     <br>
 
@@ -41,4 +57,5 @@
             <br>
 
     </body>
+
 {% endblock %}
