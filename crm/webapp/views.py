@@ -8,7 +8,10 @@ from django.contrib.auth.decorators import login_required
 
 from .models import Record
 
-# Стратовая страницы
+from django.contrib import messages
+
+
+# Стартовая страница
 def home(request):
     return render(request, 'webapp/index.html')
 
@@ -20,6 +23,7 @@ def register(request):
         form = CreateUserForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, "Аккаунт успешно создан!")
             return redirect('my-login')
     context = {'form': form}
     return render(request, 'webapp/register.html', context=context)
@@ -36,6 +40,7 @@ def my_login(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 auth.login(request, user)
+                messages.success(request, "Вы успешно зашли в свой аккаунт!")
                 return redirect("dashboard")
     context = {'form': form}
     return render(request, 'webapp/my-login.html', context=context)
@@ -57,6 +62,7 @@ def create_record(request):
         form = CreateRecordForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, "Запись создана!")
             return redirect("dashboard")
     context = {'form': form}
     return render(request, 'webapp/create-record.html', context=context)
@@ -71,6 +77,7 @@ def update_record(request, pk):
         form = UpdateRecordForm(request.POST, instance=record)
         if form.is_valid():
             form.save()
+            messages.success(request, "Запись обновлена!")
             return redirect("dashboard")
     context = {'form': form}
     return render(request, 'webapp/update-record.html', context=context)
@@ -89,13 +96,12 @@ def singular_record(request, pk):
 def delete_record(request, pk):
     record = Record.objects.get(id=pk)
     record.delete()
+    messages.success(request, "Запись удалена!")
     return redirect("dashboard")
-
-
-
 
 
 # Выход пользователей
 def user_logout(request):
     auth.logout(request)
+    messages.success(request, "Выход выполнен успешно!")
     return redirect("my-login")
