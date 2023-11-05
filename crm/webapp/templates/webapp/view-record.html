@@ -30,15 +30,27 @@
 
     <br>
 
-    <a href="{% url 'dashboard' %}" class="btn btn-secondary">Назад</a>
+    <a href="{% url 'dashboard' %}" class="btn btn-secondary">
+
+        Назад &nbsp; <i class="fa fa-arrow-left" aria-hidden="true"></i>
+
+    </a>
 
     &nbsp;
 
-    <a href="{% url 'update-record' record.id %}" class="btn btn-info">Обновить</a>
+    <a href="{% url 'update-record' record.id %}" class="btn btn-info">
+
+        Обновить &nbsp; <i class="fa fa-refresh" aria-hidden="true"></i>
+
+    </a>
 
     &nbsp;
 
-    <a href="{% url 'delete-record' record.id %}" class="btn btn-danger">Удалить</a>
+    <a href="{% url 'delete-record' record.id %}" class="btn btn-danger">
+
+        Удалить &nbsp; <i class="fa fa-trash-o" aria-hidden="true"></i>
+
+    </a>
 
 
 {% endblock %}
