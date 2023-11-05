@@ -1,0 +1,68 @@
+{% extends 'webapp/base.html' %}
+
+{% block content %}
+
+    <h5>Добро пожаловать в таблицу, {{user}}!</h5>
+
+    <hr>
+
+    <a class="btn btn-outline-primary btn-sm" href="{% url 'create-record' %}">
+
+        Создать запись
+
+    </a>
+
+    <hr>
+
+    <table class="table table-hover table-bordered">
+
+        <thead class="table-light">
+
+            <tr>
+
+                <th scope="col">ID</th>
+                <th scope="col">Наименование</th>
+                <th scope="col">Инв. №</th>
+                <th scope="col">Сер. №</th>
+                <th scope="col">Местонахождение</th>
+                <th scope="col">Статус</th>
+                <th scope="col">Дата создания</th>
+                <th scope="col">Просмотр</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+        {% if records %}
+
+            {% for record in records %}
+
+            <tr>
+
+                <td>{{record.id}}</td>
+
+                <td>{{record.first_name}}</td>
+
+                <td>{{record.inv_num}}</td>
+
+                <td>{{record.ser_num}}</td>
+
+                <td>{{record.place_pass}}</td>
+
+                <td>{{record.status_pass}}</td>
+
+                <td>{{record.creation_date}}</td>
+
+            </tr>
+
+            {% endfor %}
+
+        {% endif %}
+
+        </tbody>
+
+    </table>
+
+{% endblock %}
