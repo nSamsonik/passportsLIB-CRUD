@@ -40,7 +40,6 @@ def my_login(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 auth.login(request, user)
-                messages.success(request, "Вы успешно зашли в свой аккаунт!")
                 return redirect("dashboard")
     context = {'form': form}
     return render(request, 'webapp/my-login.html', context=context)
